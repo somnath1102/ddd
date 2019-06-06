@@ -1,6 +1,6 @@
 package com.thoughtworks.domain.entity;
 
-import com.thoughtworks.domain.factory.InputType;
+import com.thoughtworks.domain.valueobjects.InputType;
 
 public class Input {
 	private Long id;
@@ -8,7 +8,7 @@ public class Input {
 	private final String text;
 	private Transaction transaction;
 
-	Input(InputType type, String text) {
+	Input(InputType type, String text, Transaction transaction) {
 		this.type = type;
 		this.text = text;
 	}

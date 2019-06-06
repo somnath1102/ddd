@@ -24,7 +24,7 @@ public class FileMessageReader implements MessageReader {
 				request.getMessageLines().add(currLine);
 			}
 		} catch (IOException e) {
-			throw new ApplicationException(String.format("Error Reading path {}", path), e);
+			throw new ApplicationException(String.format("Error Reading path {%s}", path), "", e);
 		}
 		return request;
 	}

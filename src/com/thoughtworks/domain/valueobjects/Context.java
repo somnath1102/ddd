@@ -5,7 +5,7 @@ import com.thoughtworks.domain.entity.Transaction;
 public class Context {
 
 	private String input;
-	private String output;
+	private long output;
 	private final Transaction transaction;
 
 	public Context(String input, Transaction transaction) {
@@ -21,11 +21,11 @@ public class Context {
 		this.input = input;
 	}
 
-	public String getOutput() {
+	public long getOutput() {
 		return output;
 	}
 
-	public void setOutput(String output) {
+	public void setOutput(long output) {
 		this.output = output;
 	}
 	

@@ -4,12 +4,21 @@ package com.thoughtworks.application;
 /**
  * Top level exception for the conversion program.
  */
-public class ApplicationException extends Exception {
-	public ApplicationException(String message) {
+public class ApplicationException extends RuntimeException {
+
+	private final String input;
+
+	public ApplicationException(String message, String input) {
 		super(message);
+		this.input = input;
 	}
 
-	public ApplicationException(String s, Exception e) {
-		super(s, e);
+	public ApplicationException(String message, String input, Exception e) {
+		super(message, e);
+		this.input = input;
+	}
+
+	public String getInput() {
+		return input;
 	}
 }

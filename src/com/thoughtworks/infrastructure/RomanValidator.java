@@ -8,15 +8,20 @@ import java.util.Set;
 import com.thoughtworks.application.ApplicationException;
 
 /**
- * Implements logic to validate roman values and calculate its decimal equivalent.
+ * Implements logic to validate roman values and calculate its decimal equivalent and other utilities. Candidate for applying the
+ * interpreter-pattern to realise this too?
  *
  */
-public class RomanUtil {
+public final class RomanValidator {
+
 	private static Map<String, Integer> valueMap = new HashMap<String, Integer>();
 	private static Map<String, Set<String>> subtractionMap = new HashMap<String, Set<String>>();
 	private static Set<String> maxThreeSuccessiveOnly = new HashSet<String>();
 	private static Set<String> nonRepeatable = new HashSet<String>();
 	private static Set<String> nonSubtractable = nonRepeatable;
+
+	private RomanValidator() {
+	}
 
 	static {
 		valueMap.put("I", 1);
@@ -47,20 +52,16 @@ public class RomanUtil {
 		subtractionMap.put("C", subtractablesC);
 	}
 
-	public static Map<String, Integer> getValueMap() {
-		return valueMap;
-	}
-
-	public static void validate(String romanValue) throws ApplicationException {
+	public static void validate(String romanValue, String input) {
 		String curr = "";
 		ConsecutiveTracker tracker = new ConsecutiveTracker();
 		for (int i = 0; i < romanValue.length(); i++) {
 			String prev = i > 0 ? romanValue.charAt(i - 1) + "" : "";
 			curr = romanValue.charAt(i) + "";
 			if (!valueMap.keySet().contains(curr))
-				throw new ApplicationException(curr + " is not a roman character");
+				throw new ApplicationException(curr + " is not a roman character", input);
 			if (curr.equals(prev) && nonRepeatable.contains(curr))
-				throw new ApplicationException(curr + " cannot be repeated");
+				throw new ApplicationException(curr + " cannot be repeated", input);
 			if (!tracker.getRoman().equals(curr)) {
 				tracker.setRoman(curr);
 				tracker.setCount(1);
@@ -68,16 +69,16 @@ public class RomanUtil {
 				tracker.setCount(tracker.getCount() + 1);
 			}
 			if (maxThreeSuccessiveOnly.contains(curr) && (tracker.getCount() > 3))
-				throw new ApplicationException(curr + " cannot be repeated more than " + 3 + " times");
+				throw new ApplicationException(curr + " cannot be repeated more than " + 3 + " times", input);
 			if (valueMap.containsKey(prev) && (valueMap.get(curr) > valueMap.get(prev))) {
 				if (nonSubtractable.contains(prev) || (subtractionMap.containsKey(prev) && !subtractionMap.get(prev).contains(curr)))
-					throw new ApplicationException(prev + " cannot be subtracted from " + curr);
+					throw new ApplicationException(prev + " cannot be subtracted from " + curr, input);
 				if (i > 1) {
 					String prevOfPrev = romanValue.charAt(i - 2) + "";
 					// check if both preceding are smaller than curr
 					if (valueMap.containsKey(prevOfPrev) && (valueMap.get(curr) > valueMap.get(prevOfPrev)))
 						throw new ApplicationException(prevOfPrev + prev + " cannot be subtracted from " + curr
-								+ " .Only one smaller value can be subtracted");
+								+ " .Only one smaller value can be subtracted", input);
 				}
 			}
 		}

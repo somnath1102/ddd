@@ -1,4 +1,4 @@
-package com.thoughtworks.domain.factory;
+package com.thoughtworks.domain.valueobjects;
 
 import com.thoughtworks.infrastructure.TransactionRegex;
 

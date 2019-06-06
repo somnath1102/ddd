@@ -1,6 +1,6 @@
 package com.thoughtworks.domain.entity;
 
-import com.thoughtworks.domain.factory.OutputType;
+import com.thoughtworks.domain.valueobjects.OutputType;
 
 public class Output {
 	private Long id;
@@ -8,9 +8,10 @@ public class Output {
 	private final String text;
 	private Transaction transaction;
 
-	Output(OutputType type, String text) {
+	Output(OutputType type, String text, Transaction transaction) {
 		this.type = type;
 		this.text = text;
+		this.transaction = transaction;
 	}
 
 	public OutputType getType() {

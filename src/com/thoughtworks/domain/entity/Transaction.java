@@ -1,21 +1,18 @@
 package com.thoughtworks.domain.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.thoughtworks.domain.factory.InputType;
-import com.thoughtworks.domain.factory.OutputType;
+import com.thoughtworks.domain.valueobjects.InputType;
+import com.thoughtworks.domain.valueobjects.OutputType;
 
 public class Transaction {
 
 	private Long id;
-	private List<Input> inputs;
-	private List<Output> outputs;
-	private List<Symbol> symbols;
-	private List<CommodityRate> rates;
-
-	public Transaction() {
-		// TODO Auto-generated constructor stub
-	}
+	private List<Input> inputs = new ArrayList<>();
+	private List<Output> outputs = new ArrayList<>();
+	private List<Symbol> symbols = new ArrayList<>();
+	private List<CommodityRate> rates = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -25,63 +22,59 @@ public class Transaction {
 		this.id = id;
 	}
 
-	public List<Input> getInputs() {
-		return inputs;
+	public List<Output> getUnmodifiableOutputs() {
+		return new ArrayList<>(outputs);
 	}
-
-	public void setInputs(List<Input> inputs) {
-		for (Input input : inputs) {
-			input.setTransaction(this);
-		}
-		this.inputs = inputs;
-	}
-
-	public List<Output> getOutputs() {
-		return outputs;
-	}
-
-	public void setOutputs(List<Output> outputs) {
-		for (Output output : outputs) {
-			output.setTransaction(this);
-		}
-		this.outputs = outputs;
-	}
-
-	public List<Symbol> getSymbols() {
-		return symbols;
-	}
-
-	public void setSymbols(List<Symbol> symbols) {
-		for (Symbol symbol : symbols) {
-			symbol.setTransaction(this);
-		}
-		this.symbols = symbols;
-	}
-
-	public List<CommodityRate> getRates() {
-		return rates;
-	}
-
-	public void setRates(List<CommodityRate> rates) {
-		for (CommodityRate rate : rates) {
-			rate.setTransaction(this);
-		}
-		this.rates = rates;
+	
+	public List<Input> getUnmodifiableInputs() {
+		return new ArrayList<>(inputs);
 	}
 
 	public Symbol newSymbol(String galactic, String roman) {
-		return new Symbol(galactic, roman);
+		return new Symbol(galactic, roman, this);
 	}
 
-	public CommodityRate newRate(String commodity, Long rate) {
-		return new CommodityRate(commodity, rate);
+	public CommodityRate newRate(String commodity, Double rate) {
+		return new CommodityRate(commodity, rate, this);
 	}
 
 	public Input newInput(InputType type, String text) {
-		return new Input(type, text);
+		return new Input(type, text, this);
 	}
 
 	public Output newOutput(OutputType type, String text) {
-		return new Output(type, text);
+		return new Output(type, text, this);
+	}
+
+	public boolean addSymbol(Symbol symbol) {
+		return symbols.add(symbol);
+	}
+
+	public String getRoman(String galactic) {
+		for (Symbol symbol : symbols) {
+			if (symbol.getGalatic().equals(galactic))
+				return symbol.getRoman();
+		}
+		return null;
+	}
+
+	public void addRate(CommodityRate newRate) {
+		rates.add(newRate);
+	}
+
+	public Double getRate(String commodity) {
+		for (CommodityRate rate : rates) {
+			if (rate.getCommodity().equals(commodity))
+				return rate.getRate();
+		}
+		return null;
+	}
+
+	public void addInput(Input newInput) {
+		inputs.add(newInput);
+	}
+
+	public void addOutput(Output newOutput) {
+		outputs.add(newOutput);
 	}
 }

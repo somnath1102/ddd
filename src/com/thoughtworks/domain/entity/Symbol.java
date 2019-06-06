@@ -6,9 +6,10 @@ public class Symbol {
 	private final String roman;
 	private Transaction transaction;
 
-	Symbol(String galactic, String roman) {
+	Symbol(String galactic, String roman, Transaction transaction) {
 		this.galatic = galactic;
 		this.roman = roman;
+		this.transaction = transaction;
 	}
 
 	public String getGalatic() {
