@@ -2,6 +2,12 @@ package com.thoughtworks.domain.valueobjects;
 
 import com.thoughtworks.domain.entity.Transaction;
 
+/**
+ * Captures the mapping between galactic and roman units.
+ * 
+ * @author somnath
+ *
+ */
 public class SymbolExpression implements Expression {
 	
 	SymbolExpression() {

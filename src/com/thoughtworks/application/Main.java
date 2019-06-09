@@ -3,6 +3,14 @@ package com.thoughtworks.application;
 import com.thoughtworks.domain.service.TransactionService;
 import com.thoughtworks.infrastructure.MessageReader;
 
+/**
+ * Starting point of the application. reads from an input location and writes the output to STD out.
+ * Also prints stacktrace in case of an exception.
+ * Has to be run for each input file.
+ * 
+ * @author somnath
+ *
+ */
 public class Main {
 
 	private static final String FILE_LOCATION = "C:\\workspaces\\input.txt";

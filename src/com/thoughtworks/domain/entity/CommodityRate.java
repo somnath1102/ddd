@@ -1,9 +1,15 @@
 package com.thoughtworks.domain.entity;
 
+/**
+ * Captures the commodity rate in a transaction. 
+ * 
+ * @author somnath
+ *
+ */
 public class CommodityRate {
 
 	private Long id;
-	private Transaction transaction;
+	private final Transaction transaction;
 	private final String commodity;
 	private final Double rate;
 
@@ -20,20 +26,5 @@ public class CommodityRate {
 	public Double getRate() {
 		return rate;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public Transaction getTransaction() {
-		return transaction;
-	}
-
-	void setTransaction(Transaction transaction) {
-		this.transaction = transaction;
-	}
-
-	void setId(Long id) {
-		this.id = id;
-	}
+	
 }

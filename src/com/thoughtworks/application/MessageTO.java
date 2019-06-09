@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Simple TO object for both request and response.
+ * @author somnath
+ *
+ */
 public class MessageTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;

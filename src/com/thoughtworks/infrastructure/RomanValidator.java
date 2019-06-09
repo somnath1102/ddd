@@ -8,7 +8,7 @@ import java.util.Set;
 import com.thoughtworks.application.ApplicationException;
 
 /**
- * Implements logic to validate roman values and calculate its decimal equivalent and other utilities. Candidate for applying the
+ * Implements logic to validate roman expression. Candidate for applying the
  * interpreter-pattern to realise this too?
  *
  */
@@ -51,7 +51,13 @@ public final class RomanValidator {
 		subtractablesC.add("M");
 		subtractionMap.put("C", subtractablesC);
 	}
-
+	
+	/**
+	 * Throws and ApplicationException with details if not valid.
+	 * 
+	 * @param romanValue to be parsed
+	 * @param input kept to identify the source line in error in the exception
+	 */
 	public static void validate(String romanValue, String input) {
 		String curr = "";
 		ConsecutiveTracker tracker = new ConsecutiveTracker();

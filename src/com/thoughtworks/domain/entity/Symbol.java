@@ -1,10 +1,17 @@
 package com.thoughtworks.domain.entity;
 
+/**
+ * Encapsulates the mapping between a galactic unit and its roman equivalent.
+ * Belongs to a transaction(per input file).
+ * 
+ * @author somnath
+ *
+ */
 public class Symbol {
 	private Long id;
 	private final String galatic;
 	private final String roman;
-	private Transaction transaction;
+	private final Transaction transaction;
 
 	Symbol(String galactic, String roman, Transaction transaction) {
 		this.galatic = galactic;
@@ -18,22 +25,6 @@ public class Symbol {
 
 	public String getRoman() {
 		return roman;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public Transaction getTransaction() {
-		return transaction;
-	}
-
-	void setTransaction(Transaction transaction) {
-		this.transaction = transaction;
-	}
-
-	void setId(Long id) {
-		this.id = id;
 	}
 
 }

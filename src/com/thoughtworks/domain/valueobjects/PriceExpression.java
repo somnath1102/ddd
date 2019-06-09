@@ -7,6 +7,13 @@ import com.thoughtworks.domain.entity.Input;
 import com.thoughtworks.infrastructure.RomanValidator;
 import com.thoughtworks.infrastructure.StringUtil;
 
+/**
+ * Calculates the price for a commodity as per the query. uses information captured by the Symbol and Rate expressions.
+ * Uses a value expression for calculation.
+ * 
+ * @author somnath
+ *
+ */
 public class PriceExpression implements Expression {
 
 	private final Expression valueExpression;

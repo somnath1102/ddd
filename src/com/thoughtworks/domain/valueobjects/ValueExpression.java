@@ -7,6 +7,11 @@ import com.thoughtworks.domain.entity.Input;
 import com.thoughtworks.infrastructure.RomanValidator;
 import com.thoughtworks.infrastructure.TransactionRegex;
 
+/**
+ * Calculates the value in decimal from a galactic unit expression using already captured information.
+ * @author mukherj9
+ *
+ */
 public class ValueExpression implements Expression {
 
 	private final List<Expression> expressions;

@@ -6,6 +6,11 @@ import com.thoughtworks.application.ApplicationException;
 import com.thoughtworks.domain.entity.Input;
 import com.thoughtworks.infrastructure.RomanValidator;
 
+/**
+ * Captures the rate of a commodity by interpreting a rate input.
+ * @author mukherj9
+ *
+ */
 public class RateExpression implements Expression {
 
 	private static final String IS = " is ";

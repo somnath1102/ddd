@@ -2,6 +2,15 @@ package com.thoughtworks.domain.valueobjects;
 
 import com.thoughtworks.domain.entity.Transaction;
 
+/**
+ * Is mutable.
+ * Holds the input and transaction.
+ * Transaction entity is populated from this context by the expressions.
+ * output field is only used for the roman value calculation.
+ * 
+ * @author somnath
+ *
+ */
 public class Context {
 
 	private String input;

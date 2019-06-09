@@ -2,7 +2,9 @@ package com.thoughtworks.application;
 
 @SuppressWarnings("serial")
 /**
- * Top level exception for the conversion program.
+ * Unchecked exception for the conversion program.
+ * Captures the input line if possible.
+ * Fail-fast approach
  */
 public class ApplicationException extends RuntimeException {
 

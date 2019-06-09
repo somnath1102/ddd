@@ -8,6 +8,12 @@ import java.io.IOException;
 import com.thoughtworks.application.ApplicationException;
 import com.thoughtworks.application.MessageTO;
 
+/**
+ * Reads from a hard code file path.
+ * 
+ * @author somnath
+ *
+ */
 public class FileMessageReader implements MessageReader {
 
 	private static FileMessageReader singleton = new FileMessageReader();

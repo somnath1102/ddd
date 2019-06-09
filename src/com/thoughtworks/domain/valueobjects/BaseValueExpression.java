@@ -1,5 +1,11 @@
 package com.thoughtworks.domain.valueobjects;
 
+/**
+ * Template methods for realising the Interpreter pattern.
+ * 
+ * @author somnath
+ *
+ */
 public abstract class BaseValueExpression implements Expression {
 
 	public void interpret(Context context) {

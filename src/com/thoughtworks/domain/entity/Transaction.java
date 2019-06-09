@@ -6,21 +6,22 @@ import java.util.List;
 import com.thoughtworks.domain.valueobjects.InputType;
 import com.thoughtworks.domain.valueobjects.OutputType;
 
+/**
+ * The root entity which encapsulates domain info for each input file.
+ * This can be persisted to track all info for each input file.
+ * Also used to calculate the response from its encapsulated 'outputs'.
+ * 
+ * @author somnath
+ *
+ */
 public class Transaction {
 
+	@SuppressWarnings("unused")
 	private Long id;
 	private List<Input> inputs = new ArrayList<>();
 	private List<Output> outputs = new ArrayList<>();
 	private List<Symbol> symbols = new ArrayList<>();
 	private List<CommodityRate> rates = new ArrayList<>();
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public List<Output> getUnmodifiableOutputs() {
 		return new ArrayList<>(outputs);
